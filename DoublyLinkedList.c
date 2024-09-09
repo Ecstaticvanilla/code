@@ -55,24 +55,46 @@ void deletenode(int position)
 }
 void main()
 {
-    int n, data;
-    printf("Enter number of nodes : ");
-    scanf("%i", &n);
+    int data, choice;
     printf("Enter Data at node 1 : ");
     scanf("%i", &data);
     head = createnode(data);
-    for(int i = 2 ;i <= n ; i++)
+    int last = 1;
+    do
     {
-        printf("Enter Data at node %i : ", i);
-        scanf("%i", &data);   
-        insertnode(createnode(data),i-1);
+        printf("|| 1 for insert  ||\n|| 2 for delete  ||\n|| 3 for display ||\n|| 0 for exit    ||\nEnter Choice : ");
+        scanf("%i", &choice);
+        switch(choice)
+        {
+            case 1 : 
+                printf("Enter Data at node : ");
+                scanf("%i", &data);   
+                insertnode(createnode(data),last);
+                last++;
+                break;
+            case 2 : 
+                printf("Enter position to delete :");
+                int deleteposition;
+                scanf("%i" , &deleteposition);
+                deletenode(deleteposition);
+                last--;
+                break;
+            case 3 :
+                struct node* temp = head;
+                printf("Linked List : ");
+                while(temp!= NULL)
+                {
+                    printf("%i ", temp->data);
+                    temp = temp->next;
+                }
+                printf("\n");
+                break;
+            case 0 :
+                printf("EXITING....");
+                break;
+            default:
+                printf("Enter 0 or 1 or 2 or 3\n");
+        }
     }
-    struct node* temp = head;
-    printf("Linked List : ");
-    while(temp!= NULL)
-    {
-        printf("%i ", temp->data);
-        temp = temp->next;
-    }
-    printf("\n");
+    while(choice != 0);
 }
