@@ -58,10 +58,9 @@ treeNode* generateTree(int inorder[], int preorder[] , int length)
         printf("Create Node : %i\n", root->value);
         return root;
     }   
-    if(length > 2)
+    if(length >= 2)
     {
         treeNode* root = createTreeNode(preorder[0]);
-        printf("Create Node : %i\n", root->value);
         int root_position;
         for(int i =0; i< length; i++)
         {
